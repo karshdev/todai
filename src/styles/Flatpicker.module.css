@@ -1,0 +1,9 @@
+.flatpickrCalendar {
+}
+.flatpickrCalendar :global(.noCalendar) {
+  width: -webkit-fill-available;
+}
+.flatpickrCalendar
+  :global(.\[\&\:has\(\[role\=checkbox\]\)\]\:pr-0:has([role="checkbox"])) {
+  padding-right: 1rem;
+}

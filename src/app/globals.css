@@ -1,0 +1,305 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/roboto/Roboto-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/roboto/Roboto-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: bold;
+}
+
+@font-face {
+  font-family: "WindSong-Medium";
+  src: url("/fonts/WindSong-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PlayWrite";
+  src: url("/fonts/PlaywriteGBS-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter/Inter_18pt-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter/Inter_18pt-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: bold;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter/Inter_18pt-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "NotoSans";
+  src: url("/fonts/NotoSans_Condensed-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "NotoSans";
+  src: url("/fonts/notoSans/NotoSans_Condensed-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: bold;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("/fonts/openSans/OpenSans_Condensed-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "OpenSans";
+  src: url("/fonts/openSans/OpenSans_Condensed-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: bold;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/fonts/raleWay/Raleway-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Raleway";
+  src: url("/fonts/raleWay/Raleway-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: bold;
+}
+.__className_1deade {
+  font-family: inter;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+
+/*vide editor style */
+
+.file_picker {
+  border: 3px dashed #666;
+  cursor: pointer;
+  display: block;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  height: 100%;
+  padding: 12rem 0;
+}
+#file_picker_small {
+  padding: 3rem 2rem;
+}
+
+.range_pack {
+  position: relative;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.image_box > input {
+  pointer-events: none;
+  position: absolute;
+  appearance: none;
+  opacity: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  top: 50%;
+  background-color: transparent;
+}
+
+.image_box {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  height: 3rem;
+  /* overflow: hidden; Ensure no overflow */
+  border-radius: 10px;
+  width: 100%; /* Ensure it fits the container */
+}
+
+.image_box > img {
+  height: 100%;
+  width: 40px; /* Maintain aspect ratio */
+  flex-shrink: 1; /* Allow the images to shrink */
+  object-fit: cover;
+}
+
+.clip_box {
+  border: 3px solid #166df8;
+  position: absolute;
+  height: 110%;
+  box-shadow: 2000 0 5px 10px red, -400px 0 5px -10px red;
+  transform: translateY(-5%);
+  border-radius: 10px;
+}
+
+.clip_box::before,
+.clip_box::after {
+  position: absolute;
+  top: 70%;
+  transform: translateY(104%);
+  background-color: #ffffff52;
+  color: #000000;
+  border-radius: 5px;
+  padding: 0.3rem;
+  font-size: 0.5rem;
+  font-weight: 600;
+}
+
+.clip_box::before {
+  content: attr(data-start);
+  left: 0;
+  transform: translateY(90%) translateX(-50%);
+  margin-left: 17px;
+}
+
+.clip_box::after {
+  content: attr(data-end);
+  right: 0;
+  transform: translateY(90%) translateX(50%);
+  margin-right: 17px;
+}
+
+.clip_box_des {
+  width: 5px;
+  height: 100%;
+  background-color: rgb(14, 1, 255);
+  position: absolute;
+  z-index: -1;
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  justify-content: center;
+}
+
+.clip_box_des:nth-child(1) {
+  left: 0;
+  transform: translateX(-70%);
+  border-radius: 10px 0 0 10px;
+}
+
+.clip_box_des:nth-child(2) {
+  right: 0;
+  transform: translateX(70%);
+  flex-flow: row-reverse;
+  border-radius: 0 10px 10px 0;
+}
+
+.clip_box_des::before {
+  content: "";
+  width: 13px;
+  background-color: #f2f2f2;
+  border-radius: 100px;
+}
+
+.clip_box_des::before {
+  height: 60%;
+}
+
+.clip_box_des::after {
+  height: 40%;
+}
+
+.range::-webkit-slider-thumb {
+  appearance: none;
+  pointer-events: all;
+  width: 30px;
+  height: 200px;
+  background: rgba(255, 192, 203, 0.455);
+  cursor: ew-resize;
+}
+
+/*vide editor style */
