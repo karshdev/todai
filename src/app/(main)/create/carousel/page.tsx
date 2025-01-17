@@ -1,5 +1,5 @@
 import Carousel from "@/screens/carousel/Carousel";
-import React from "react";
+import React from "react"
 
 function page() {
   return (
