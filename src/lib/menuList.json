@@ -1,0 +1,125 @@
+[
+  {
+    "id": 2,
+    "name": "Ideate",
+    "href": "#",
+    "icon": "Lightbulb",
+    "subMenu": [
+      {
+        "id": 7,
+        "name": "Linkedin Rework",
+        "href": "/ideate/linkedin-rework",
+        "order": 6,
+        "icon": "IconBookmarkEdit"
+      },
+      {
+        "id": 6,
+        "name": "Books",
+        "href": "/ideate/books",
+        "order": 6,
+        "icon": "IconBooks"
+      },
+      {
+        "id": 5,
+        "name": "My View",
+        "href": "/ideate/my-view",
+        "order": 5,
+        "icon": "IconEye"
+      },
+      {
+        "id": 4,
+        "name": "Top Voices",
+        "href": "/ideate/top-voices",
+        "order": 4,
+        "icon": "IconSpeakerphone"
+      },
+      {
+        "id": 3,
+        "name": "Recent News",
+        "href": "/ideate/news",
+        "order": 3,
+        "icon": "IconWorld"
+      },
+      {
+        "id": 2,
+        "name": "AI Content",
+        "href": "/ideate/ai-content",
+        "order": 2,
+        "icon": "IconFileTextAi"
+      },
+      {
+        "id": 1,
+        "name": "Inspiration from Linkedin",
+        "href": "/ideate/linkedin-viral-content",
+        "icon": "IconBrandLinkedin",
+        "order": 1
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Create",
+    "href": "#",
+    "icon": "Plus",
+    "subMenu": [
+      {
+        "id": 1,
+        "name": "Quotes",
+        "href": "/create/quotes",
+        "order": 1,
+        "icon": "IconQuote"
+      },
+      {
+        "id": 2,
+        "name": "Carousel",
+        "href": "/create/carousel",
+        "order": 2,
+        "icon": "IconCarouselHorizontal"
+      },
+      {
+        "id": 3,
+        "name": "Magic Video",
+        "href": "/create/video",
+        "order": 3,
+        "icon": "IconPlayerPlay"
+      },
+      {
+        "id": 4,
+        "name": "Subtitles",
+        "href": "/create/subtitles",
+        "order": 3,
+        "icon": "Subtitles"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Learn",
+    "href": "#",
+    "icon": "IconBook2",
+    "subMenu": [
+      {
+        "id": 1,
+        "name": "Book Summary",
+        "href": "/learn/book-summary",
+        "order": 1,
+        "icon": "IconBook"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Schedule",
+    "href": "#",
+    "icon": "IconCalendarClock",
+    "subMenu": [
+      {
+        "id": 1,
+        "name": "Calendar",
+        "href": "/schedule/calendar",
+        "order": 1,
+        "icon": "IconCalendar"
+      }
+    ]
+  }
+]
