@@ -49,6 +49,8 @@ const LINKEDIN_REWORK_API = '/v1/api/core/linkedin-rework/'
 const GET_SUBTITLE_API = '/v1/api/core/video/clip/subtitles/'
 const UPDATE_SUBTITLE_API = '/v1/api/core/video/subtitles/'
 const EDIT_CLIP_API = '/v1/api/core/video/clip/edit/'
+const CONTENT_CALENDAR_API = '/v1/api/core/content-calendar/'
+
 // const DELETE_SCHEDULED_POST_API = '/v1/api/core/posts'
 
 
@@ -923,6 +925,20 @@ export const postLinkedinRework = async (postData: PropLinkedinRework) => {
         return response;
     } catch (error) {
         console.error('Error getting linkedin rework:', error);
+        return error;
+        throw error; // Rethrow the error for the caller to handle
+    }
+};
+export const postContentCalendar = async () => {
+    try {
+        const url = `${BASE_URL}${CONTENT_CALENDAR_API}`;
+        const response = await postDataWithToken(url,"");
+        if (response.status !== 200 && response?.status !== 400) {
+            throw new Error('Failed to get content calendar response');
+        }
+        return response;
+    } catch (error) {
+        console.error('Error getting content calendar:', error);
         return error;
         throw error; // Rethrow the error for the caller to handle
     }
