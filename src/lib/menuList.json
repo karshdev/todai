@@ -89,6 +89,13 @@
         "href": "/create/subtitles",
         "order": 3,
         "icon": "Subtitles"
+      },
+      {
+        "id": 5,
+        "name": "BYOI",
+        "href": "/create/image",
+        "order": 5,
+        "icon": "IconPlayerPlay"
       }
     ]
   },

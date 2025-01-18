@@ -176,16 +176,20 @@ export const Card: React.FC<CardProps> = ({
   return (
     <div
       ref={container}
-      className="h-screen flex items-center justify-center sticky top-10 ">
+      className="h-screen flex items-center justify-center sticky top-10 "
+    >
       <motion.div
         style={{
           backgroundColor: color,
           scale,
           top: `calc(-5vh + ${i * 25}px)`,
         }}
-        className={`flex flex-col relative -top-[25%] h-[650px] w-full md:w-[70%] rounded-md p-10 origin-top shadow-lg bg-gradient-to-r from-gray-50 to-gray-200`}>
+        className={`flex flex-col relative -top-[25%] h-[650px] w-full md:w-[70%] rounded-md p-10 origin-top shadow-lg bg-gradient-to-r from-gray-50 to-gray-200`}
+      >
         <h2 className="text-xl text-center font-semibold">{title}</h2>
-        <div className={`flex flex-col xl:flex-row justify-center items-center h-full mt-5 gap-2 xl:gap-10`}>
+        <div
+          className={`flex flex-col xl:flex-row justify-center items-center h-full mt-5 gap-2 xl:gap-10`}
+        >
           <div className={`w-full xl:w-[40%] relative  mb-4 xl:mb-0 text-sm`}>
             {/* <p className="text-base">{description}</p> */}
             <p
@@ -214,10 +218,12 @@ export const Card: React.FC<CardProps> = ({
           </div>
 
           <div
-            className={`relative w-full xl:w-[60%] h-full min-h-44 rounded-lg overflow-hidden `}>
+            className={`relative w-full xl:w-[60%] h-full min-h-44 rounded-lg overflow-hidden `}
+          >
             <motion.div
               className={`w-full h-full`}
-              style={{ scale: imageScale }}>
+              style={{ scale: imageScale }}
+            >
               <Image fill src={url} alt="image" className="object-cover" />
             </motion.div>
           </div>

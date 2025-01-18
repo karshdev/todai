@@ -35,7 +35,7 @@ function LinkedInViralContent() {
     isLoading,
     isError,
     refetch,
-    isRefetching
+    isRefetching,
   } = useQuery({
     queryKey: ["linkedInViralContent"],
     queryFn: getLinkedInPosts,
@@ -85,8 +85,11 @@ function LinkedInViralContent() {
                 <div className="bg-transparent pr-5">
                   <div
                     className="border-slate-200 hover:bg-slate-200 !text-brand-primary rounded-md p-1 cursor-pointer"
-                    onClick={() => refetch()}>
-                    <IconReload className={cn(isRefetching && "animate-spin opacity-50")} />
+                    onClick={() => refetch()}
+                  >
+                    <IconReload
+                      className={cn(isRefetching && "animate-spin opacity-50")}
+                    />
                   </div>
                 </div>
               }
@@ -124,7 +127,6 @@ function LinkedInViralContent() {
         </div>
       )}
       {isLoading && <TodaiCircularLoader />}
-      
     </>
   );
 }

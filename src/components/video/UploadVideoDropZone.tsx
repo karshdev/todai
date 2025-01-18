@@ -4,7 +4,6 @@ import { useDropzone } from "react-dropzone";
 import { useToast } from "../ui/use-toast";
 import TodaiIcon from "../icon/TodaiIcon";
 import { IconDragDrop } from "@tabler/icons-react";
-import axios from "axios";
 import { uploadVideoProgress } from "@/lib/axios/api";
 
 type UploadVideoDropZoneProps = {
@@ -53,7 +52,7 @@ function UploadVideoDropZone({
       setUploadProgress(0);
     },
     onError: (error: any) => {
-      console.log("🚀 ~ error:", error);
+      console.log("error:", error);
       setLoading(false);
       setUploadProgress(0);
       toast({
