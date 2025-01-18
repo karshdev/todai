@@ -6,6 +6,13 @@
     "icon": "Lightbulb",
     "subMenu": [
       {
+        "id": 8,
+        "name": "Content calendar",
+        "href": "/ideate/content-calendar",
+        "order": 6,
+        "icon": "IconBookmarkEdit"
+      },
+      {
         "id": 7,
         "name": "Linkedin Rework",
         "href": "/ideate/linkedin-rework",
