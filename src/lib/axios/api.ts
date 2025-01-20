@@ -56,7 +56,8 @@ const GET_SUBTITLE_API = "/v1/api/core/video/clip/subtitles/";
 const UPDATE_SUBTITLE_API = "/v1/api/core/video/subtitles/";
 const EDIT_CLIP_API = "/v1/api/core/video/clip/edit/";
 const BYOI_IMAGE_TO_CAPTION = "/v1/api/core/image-caption/";
-const CONTENT_CALENDAR_API = '/v1/api/core/content-calendar/'
+const CONTENT_CALENDAR_API = "/v1/api/core/content-calendar/";
+const POST_BLOG_URL_API = "/v1/api/core/blog-scrape/";
 // const DELETE_SCHEDULED_POST_API = '/v1/api/core/posts'
 
 export const signUpUser = async (formData: FormData) => {
@@ -929,7 +930,7 @@ export const postLinkedinRework = async (postData: PropLinkedinRework) => {
 
 export const fetchCaptionAndHashtags = async (fileInput: File | string) => {
   try {
-    const fileBlob = await getFileBlob(fileInput);
+    // const fileBlob = await getFileBlob(fileInput);
     // console.log("🚀 ~ uploadResources ~ fileBlob:", fileBlob);
     const formData = new FormData();
     formData.append("image", fileInput);
@@ -946,15 +947,30 @@ export const fetchCaptionAndHashtags = async (fileInput: File | string) => {
 };
 export const postContentCalendar = async () => {
   try {
-      const url = `${BASE_URL}${CONTENT_CALENDAR_API}`;
-      const response = await postDataWithToken(url,"");
-      if (response.status !== 200 && response?.status !== 400) {
-          throw new Error('Failed to get content calendar response');
-      }
-      return response;
+    const url = `${BASE_URL}${CONTENT_CALENDAR_API}`;
+    const response = await postDataWithToken(url, "");
+    if (response.status !== 200 && response?.status !== 400) {
+      throw new Error("Failed to get content calendar response");
+    }
+    return response;
   } catch (error) {
-      console.error('Error getting content calendar:', error);
-      return error;
-      throw error; // Rethrow the error for the caller to handle
+    console.error("Error getting content calendar:", error);
+    return error;
+    throw error; // Rethrow the error for the caller to handle
+  }
+};
+
+type PropsBlogScrapeAndPost = { url: string };
+export const postBlogUrl = async (data: PropsBlogScrapeAndPost) => {
+  try {
+    const url = `${BASE_URL}${POST_BLOG_URL_API}`;
+    const response = await postDataWithToken(url, data);
+    if (response.status !== 200 && response?.status !== 400) {
+      throw new Error("Failed to get content calendar response");
+    }
+    return response;
+  } catch (error) {
+    console.error("Error getting content calendar:", error);
+    throw error;
   }
 };

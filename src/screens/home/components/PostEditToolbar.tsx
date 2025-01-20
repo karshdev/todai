@@ -4,7 +4,7 @@ import { useResponsiveWidth } from '@/hooks/useResponsiveWidth';
 import { IconPencilBolt, IconPhotoAi } from '@tabler/icons-react';
 import EmojiPicker from 'emoji-picker-react';
 import GifPicker from 'gif-picker-react';
-import { Hash, Paperclip, SmilePlusIcon } from 'lucide-react';
+import { Hash, Paperclip, SmilePlusIcon, Images  } from 'lucide-react';
 import React from 'react';
 
 type PostEditToolbarProps = {
@@ -20,6 +20,7 @@ type PostEditToolbarProps = {
   pickerRef: any,
   fileInputRef: any,
   handleAiRewriteClick?: () => void
+  toggleStockImage?: () => void
 };
 
 const extraClass = 'w-5 h-5 cursor-pointer text-slate-400 hover:bg-slate-100 rounded-md'
@@ -36,7 +37,8 @@ const PostEditToolbar: React.FC<PostEditToolbarProps> = ({
   handlePickerToggle,
   pickerRef,
   fileInputRef,
-  handleAiRewriteClick
+  handleAiRewriteClick,
+  toggleStockImage
 }) => {
   const width = useResponsiveWidth();
 
@@ -45,6 +47,7 @@ const PostEditToolbar: React.FC<PostEditToolbarProps> = ({
       <IconWithTooltip Icon={IconPencilBolt} className={extraClass} tooltipText='Rewrite with AI' onClick={handleAiRewriteClick} />
       <IconWithTooltip Icon={IconPhotoAi} className={extraClass} onClick={onGenerateImage} tooltipText='Generate AI Image' />
       <IconWithTooltip Icon={Paperclip} className={extraClass} onClick={() => fileInputRef.current?.click()} tooltipText='Attach Image' />
+      <IconWithTooltip Icon={Images} className={extraClass} onClick={toggleStockImage} tooltipText='Stock Image' />
       <IconWithTooltip Icon={Hash} className={extraClass} onClick={onGenerateHashtags} tooltipText='Generate Hashtags' />
       <TodaiTooltip
         triggerContent={

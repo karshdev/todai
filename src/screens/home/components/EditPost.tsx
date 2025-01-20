@@ -12,6 +12,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
 import PostEditToolbar from "./PostEditToolbar";
 import { ReviseLinkedInPost } from "./ReviseLinkedInPost";
+import StockImageList from "@/screens/quotes/components/StockImageList";
+import { X } from "lucide-react";
 // import PostButton from '@/components/button/PostButton';
 
 type EditPostProps = {
@@ -46,6 +48,9 @@ function EditPost({
     handleHashtagClick,
     removingHashtag,
     setPostText,
+    showStockImage,
+    handleImageSelect,
+    toggleStockImage
   } = useEditPost(text);
   const { closeModal } = useModal();
   const isPickerOpen = pickerType !== null;
@@ -161,6 +166,7 @@ function EditPost({
               pickerRef={pickerRef}
               fileInputRef={fileInputRef}
               handleAiRewriteClick={handleAiRewriteClick}
+              toggleStockImage={toggleStockImage}
             />
             {/* <TodaiAnimatedButton className="px-8 py-2 rounded-3xl text-white bg-brand-primary border border-brand-primary hover:bg-white hover:text-brand-primary">
                     Post
@@ -213,6 +219,14 @@ function EditPost({
                     </motion.span>
                   ))}
                 </AnimatePresence>
+              </div>
+            </div>
+          )}
+          {showStockImage && (
+            <div className="mt-5 border border-gray-200 rounded-md">
+              <X className="ml-auto cursor-pointer" onClick={toggleStockImage} />
+              <div className=" flex flex-wrap  gap-2 py-5">
+                <StockImageList onImageSelect={handleImageSelect} />
               </div>
             </div>
           )}
