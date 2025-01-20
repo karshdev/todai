@@ -14,6 +14,7 @@ import PostEditToolbar from "./PostEditToolbar";
 import { ReviseLinkedInPost } from "./ReviseLinkedInPost";
 import StockImageList from "@/screens/quotes/components/StockImageList";
 import { X } from "lucide-react";
+import Indicator from "@/components/indicator/Indicator";
 // import PostButton from '@/components/button/PostButton';
 
 type EditPostProps = {
@@ -28,6 +29,7 @@ function EditPost({
   thumbnailUrl,
   handleCloseSheet,
 }: EditPostProps) {
+
   const {
     postText,
     selectedGif,
@@ -52,13 +54,14 @@ function EditPost({
     handleImageSelect,
     toggleStockImage
   } = useEditPost(text);
+
+  
   const { closeModal } = useModal();
   const isPickerOpen = pickerType !== null;
   const [aiRewrite, setAiRewrite] = useState({ show: false, content: "" });
 
   const handleAiRewriteClick = () => {
-    setAiRewrite &&
-      setAiRewrite((prev: any) => ({ ...prev, show: !prev.show }));
+    setAiRewrite((prev: any) => ({ ...prev, show: !prev.show }));
     mutate(postText);
   };
 
@@ -168,6 +171,7 @@ function EditPost({
               handleAiRewriteClick={handleAiRewriteClick}
               toggleStockImage={toggleStockImage}
             />
+         <Indicator content={postText} previousContent={text ?? ""} />
             {/* <TodaiAnimatedButton className="px-8 py-2 rounded-3xl text-white bg-brand-primary border border-brand-primary hover:bg-white hover:text-brand-primary">
                     Post
                 </TodaiAnimatedButton> */}

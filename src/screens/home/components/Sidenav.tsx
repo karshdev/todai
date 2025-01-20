@@ -66,16 +66,10 @@ type ApiResponse = {
   };
 };
 
-function filterMenuByRoutes(
-  menuList: MenuItem[],
-  allowedRoutes: string[]
-): MenuItem[] {
+function filterMenuByRoutes(menuList: MenuItem[],data:[]): MenuItem[] {
   return menuList.reduce((acc: MenuItem[], menuItem) => {
     if (menuItem.subMenu) {
-      const filteredSubMenu = menuItem.subMenu.filter(
-        (subItem) =>
-          allowedRoutes.includes(subItem.href)
-      );
+      const filteredSubMenu = menuItem.subMenu.filter((subItem) => !!subItem.href);
 
       if (filteredSubMenu.length > 0) {
         acc.push({
@@ -83,7 +77,7 @@ function filterMenuByRoutes(
           subMenu: filteredSubMenu,
         });
       }
-    } else if (menuItem.href && allowedRoutes.includes(menuItem.href)) {
+    } else if (menuItem.href) {
       acc.push(menuItem);
     }
     return acc;
@@ -93,9 +87,11 @@ function filterMenuByRoutes(
 function Sidenav({ isCollapsed }: SidenavProps) {
   const [filteredMenu, setFilteredMenu] = useState<any>(menuList);
   const { data } = useProfile();
+
   useEffect(() => {
     getRoutes();
   }, [data]);
+  
   const getRoutes = () => {
     try {
       const filteredMenuList = filterMenuByRoutes(menuList, data.app_routes);

@@ -219,14 +219,14 @@ export async function middleware(req: NextRequest) {
                             return NextResponse.redirect(new URL('/help/features', req.url));
                         }
 
-                        // Only check route permissions for non-system paths
-                        if (!isSystemPath && !isPublicPath) {
-                            const hasPermission = allowedRoutes.includes(currentPath);
-                            if (!hasPermission) {
-                                console.log(`Access denied to route: ${currentPath}`);
-                                return NextResponse.redirect(new URL('/help/features', req.url));
-                            }
-                        }
+                        // // Only check route permissions for non-system paths
+                        // if (!isSystemPath && !isPublicPath) {
+                        //     const hasPermission = allowedRoutes.includes(currentPath);
+                        //     if (!hasPermission) {
+                        //         console.log(`Access denied to route: ${currentPath}`);
+                        //         return NextResponse.redirect(new URL('/help/features', req.url));
+                        //     }
+                        // }
                         break;
 
                     default:

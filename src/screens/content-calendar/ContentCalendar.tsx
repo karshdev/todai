@@ -12,7 +12,6 @@ import { motion } from "framer-motion";
 import TodaiDialog from "@/components/dialog/TodaiDialog";
 import { ShineBorder } from "@/components/card/ShineBoarder";
 
-
 type ContentCalendar = {
   content: string;
   date: string;
@@ -47,7 +46,6 @@ function ContentCalendar() {
     },
   });
 
-  
   useEffect(() => {
     setLoading(true);
     mutate();
@@ -74,11 +72,12 @@ function ContentCalendar() {
     setIsDialogOpen(true);
   };
 
+  const today = new Date();
+  const twoWeeksLater = new Date(today);
+  twoWeeksLater.setDate(today.getDate() + 14);
+
   const EventContent = () => (
     <div className="p-6">
-      <div className="text-lg font-semibold mb-4">
-        {selectedEvent?.title}
-      </div>
       <div className="text-sm text-gray-500 mb-4">
         {selectedEvent && new Date(`${selectedEvent.date}T${selectedEvent.time}`).toLocaleString('en-US', {
           weekday: 'long',
@@ -115,15 +114,26 @@ function ContentCalendar() {
         <div className="w-full overflow-x-auto">
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-            initialView="dayGridMonth"
+            initialView="timeGridTwoWeeks"
+            views={{
+              timeGridTwoWeeks: {
+                type: 'timeGrid',
+                duration: { weeks: 2 },
+                buttonText: '2 weeks'
+              }
+            }}
             headerToolbar={{
               left: 'prev,next',
               center: 'title',
-              right: 'dayGridMonth'
+              right: 'timeGridTwoWeeks'
             }}
             events={events}
             eventClick={handleEventClick}
             height="auto"
+            validRange={{
+              start: today,
+              end: twoWeeksLater
+            }}
             eventContent={(eventInfo) => (
               <motion.div
                 initial={{ opacity: 0, y: -5 }}

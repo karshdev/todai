@@ -56,8 +56,10 @@ const GET_SUBTITLE_API = "/v1/api/core/video/clip/subtitles/";
 const UPDATE_SUBTITLE_API = "/v1/api/core/video/subtitles/";
 const EDIT_CLIP_API = "/v1/api/core/video/clip/edit/";
 const BYOI_IMAGE_TO_CAPTION = "/v1/api/core/image-caption/";
-const CONTENT_CALENDAR_API = "/v1/api/core/content-calendar/";
 const POST_BLOG_URL_API = "/v1/api/core/blog-scrape/";
+const CONTENT_CALENDAR_API = '/v1/api/core/content-calendar/'
+const  PLAGIARISM_SCORE = '/v1/api/core/plagiarism/'
+
 // const DELETE_SCHEDULED_POST_API = '/v1/api/core/posts'
 
 export const signUpUser = async (formData: FormData) => {
@@ -924,7 +926,6 @@ export const postLinkedinRework = async (postData: PropLinkedinRework) => {
   } catch (error) {
     console.error("Error getting linkedin rework:", error);
     return error;
-    throw error; // Rethrow the error for the caller to handle
   }
 };
 
@@ -972,5 +973,21 @@ export const postBlogUrl = async (data: PropsBlogScrapeAndPost) => {
   } catch (error) {
     console.error("Error getting content calendar:", error);
     throw error;
+      console.error('Error getting content calendar:', error);
+      return error;
+  }
+};
+type PropPlagiarism = { original: string , modified:string };
+export const postPlagiarism = async (data:PropPlagiarism) => {
+  try {
+      const url = `${BASE_URL}${PLAGIARISM_SCORE}`;
+      const response = await postDataWithToken(url,data);
+      if (response.status !== 200 && response?.status !== 400) {
+          throw new Error('Failed to get Plagiarism score');
+      }
+      return response;
+  } catch (error) {
+      console.error('Error getting Plagiarism score:', error);
+      return error;
   }
 };
