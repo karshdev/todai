@@ -146,13 +146,24 @@ import {
   IconSpeakerphone,
   IconWorld,
 } from "@tabler/icons-react";
-import { Lightbulb, Plus, Subtitles, X } from "lucide-react";
+import {
+  Lightbulb,
+  Plus,
+  Subtitles,
+  X,
+  Newspaper,
+  CalendarRange,
+  ImageUp,
+} from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 type IconName =
   | "Lightbulb"
+  | "Newspaper"
   | "Plus"
+  | "ImageUp"
+  | "CalendarRange"
   | "IconPlayerPlay"
   | "IconBrandLinkedin"
   | "IconFileTextAi"
@@ -182,7 +193,10 @@ interface MenuItem {
 
 const iconMap: Record<IconName, React.ComponentType<any>> = {
   Lightbulb,
+  CalendarRange,
   Plus,
+  Newspaper,
+  ImageUp,
   IconPlayerPlay,
   IconBrandLinkedin,
   IconFileTextAi,
@@ -265,11 +279,13 @@ export const MobileSideNav = ({
           aria-hidden="true"
           fill="currentColor"
           viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg">
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             clipRule="evenodd"
             fillRule="evenodd"
-            d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+            d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+          ></path>
         </svg>
       </DrawerTrigger>
       <DrawerContent className="h-screen w-[70%] rounded-e-md !rounded-s-none">
@@ -283,7 +299,8 @@ export const MobileSideNav = ({
             <TodaiCollapsible collapsibleList={mappedMenuList} />
           )}
           <div
-            className={`absolute bottom-0 p-2  pb-4 flex gap-2 bg-white justify-start items-center`}>
+            className={`absolute bottom-0 p-2  pb-4 flex gap-2 bg-white justify-start items-center`}
+          >
             <TodaiTooltip
               triggerContent={
                 <Link href="/help/features">
@@ -324,9 +341,8 @@ function filterMenuByRoutes(
 ): MenuItem[] {
   return menuList.reduce((acc: MenuItem[], menuItem) => {
     if (menuItem.subMenu) {
-      const filteredSubMenu = menuItem.subMenu.filter(
-        (subItem) =>
-          allowedRoutes.includes(subItem.href)
+      const filteredSubMenu = menuItem.subMenu.filter((subItem) =>
+        allowedRoutes.includes(subItem.href)
       );
 
       if (filteredSubMenu.length > 0) {

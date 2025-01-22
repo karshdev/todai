@@ -10,14 +10,14 @@
         "name": "Blog Scrape",
         "href": "/ideate/blog",
         "order": 9,
-        "icon": "IconBookmarkEdit"
+        "icon": "Newspaper"
       },
       {
         "id": 8,
         "name": "Content calendar",
         "href": "/ideate/content-calendar",
         "order": 6,
-        "icon": "IconBookmarkEdit"
+        "icon": "CalendarRange"
       },
       {
         "id": 7,
@@ -109,7 +109,7 @@
         "name": "BYOI",
         "href": "/create/image",
         "order": 5,
-        "icon": "IconPlayerPlay"
+        "icon": "ImageUp"
       }
     ]
   },

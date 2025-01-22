@@ -21,13 +21,23 @@ import {
   IconPlayerPlay,
   IconQuote,
   IconSpeakerphone,
-  IconWorld
+  IconWorld,
 } from "@tabler/icons-react";
-import { Lightbulb, Plus, Subtitles } from "lucide-react";
+import {
+  Lightbulb,
+  Plus,
+  Subtitles,
+  Newspaper,
+  CalendarRange,
+  ImageUp,
+} from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const iconMap: { [key: string]: React.ComponentType<any> } = {
+  Newspaper: Newspaper,
+  ImageUp: ImageUp,
+  CalendarRange: CalendarRange,
   Lightbulb: Lightbulb,
   Plus: Plus,
   IconPlayerPlay: IconPlayerPlay,
@@ -66,10 +76,15 @@ type ApiResponse = {
   };
 };
 
-function filterMenuByRoutes(menuList: MenuItem[],data:[]): MenuItem[] {
+function filterMenuByRoutes(
+  menuList: MenuItem[],
+  allowedRoutes: string[]
+): MenuItem[] {
   return menuList.reduce((acc: MenuItem[], menuItem) => {
     if (menuItem.subMenu) {
-      const filteredSubMenu = menuItem.subMenu.filter((subItem) => !!subItem.href);
+      const filteredSubMenu = menuItem.subMenu.filter((subItem) =>
+        allowedRoutes.includes(subItem.href)
+      );
 
       if (filteredSubMenu.length > 0) {
         acc.push({
@@ -77,7 +92,7 @@ function filterMenuByRoutes(menuList: MenuItem[],data:[]): MenuItem[] {
           subMenu: filteredSubMenu,
         });
       }
-    } else if (menuItem.href) {
+    } else if (menuItem.href && allowedRoutes.includes(menuItem.href)) {
       acc.push(menuItem);
     }
     return acc;
@@ -91,7 +106,7 @@ function Sidenav({ isCollapsed }: SidenavProps) {
   useEffect(() => {
     getRoutes();
   }, [data]);
-  
+
   const getRoutes = () => {
     try {
       const filteredMenuList = filterMenuByRoutes(menuList, data.app_routes);
@@ -119,7 +134,11 @@ function Sidenav({ isCollapsed }: SidenavProps) {
   }));
 
   return (
-    <div className={`space-y-4 font-medium relative ${isCollapsed ? "px-2" : "px-4"}`}>
+    <div
+      className={`space-y-4 font-medium relative ${
+        isCollapsed ? "px-2" : "px-4"
+      }`}
+    >
       <TodaiCollapsible
         collapsibleList={mappedMenuList}
         isCollapsed={isCollapsed}
@@ -129,7 +148,8 @@ function Sidenav({ isCollapsed }: SidenavProps) {
           isCollapsed
             ? "flex-col justify-center items-center"
             : "flex-row justify-start left-0 right-0"
-        }`}>
+        }`}
+      >
         <TodaiTooltip
           triggerContent={
             <Link href="/help/features">
